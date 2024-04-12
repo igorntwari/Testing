@@ -21,7 +21,7 @@ test('should create an element with text and correct class', async () => {
       headless: true,
     })
     const page = await browser.newPage()
-    await page.goto('localhost:3000')
+    await page.goto('http://127.0.0.1:5500/testing01/')
     await page.click('input#name')
     await page.type('input#name', 'Anna')
     await page.click('input#age')
