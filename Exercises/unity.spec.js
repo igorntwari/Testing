@@ -1,4 +1,5 @@
 const { sum } = require("./basicFunctions");
+const { fetchUserData } = require("./asynfunction");
 
 describe("sum function functionality", () => {
   test("should return the sum of Two positive numbers", () => {
@@ -17,3 +18,18 @@ describe("sum function functionality", () => {
     expect(sum(66, 0)).toBe(66);
   });
 });
+
+it("it should handles a successful API call correctly", async () => {
+  const data = await fetchUserData();
+  expect(data).toStrictEqual({
+    userId: 1,
+    id: 1,
+    title: "delectus aut autem",
+  });
+});
+
+it('Verify the function appropriately manages an API call that fails',async ()=> {
+ await expect(fetchUserData())
+ .rejects
+ .toThrow('it should throw an error message')
+})
